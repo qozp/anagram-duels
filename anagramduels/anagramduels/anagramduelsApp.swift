@@ -1,6 +1,6 @@
 //
-//  anagramduelsApp.swift
-//  anagramduels
+//  AnagramDuelsApp.swift
+//  AnagramDuels
 //
 //  Created by Isaiah Pham on 2/23/26.
 //
@@ -8,16 +8,10 @@
 import SwiftUI
 
 @main
-struct anagramduelsApp: App {
-
-    @StateObject private var router = AppRouter()
-    @StateObject private var authService = AuthService()
-
+struct AnagramDuelsApp: App {
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environmentObject(router)
-                .environmentObject(authService)
+            ContentView()
         }
     }
 }

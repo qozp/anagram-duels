@@ -6,71 +6,41 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		3A25E6862F4CBD5E0003826F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3A25E6852F4CBD5E0003826F /* README.md */; };
-		3A25E6E02F4CC1480003826F /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3A25E6DF2F4CC1480003826F /* Supabase */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		3A25E6742F4CB8640003826F /* anagramduels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = anagramduels.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A25E6852F4CBD5E0003826F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		3A25E7172F4CCD210003826F /* REQS.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REQS.md; sourceTree = "<group>"; };
+		3A1D93A82F4CE1E100C0505B /* AnagramDuels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnagramDuels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		3A6AB69C2F4CD21500AC2E18 /* Exceptions for "anagramduels" folder in "Compile Sources" phase from "anagramduels" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 3A25E6702F4CB8640003826F /* Sources */;
-			membershipExceptions = (
-				Resources/Assets.xcassets,
-				Resources/dictionary.txt,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		3A25E6762F4CB8640003826F /* anagramduels */ = {
+		3A1D93AA2F4CE1E100C0505B /* AnagramDuels */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				3A6AB69C2F4CD21500AC2E18 /* Exceptions for "anagramduels" folder in "Compile Sources" phase from "anagramduels" target */,
-			);
-			path = anagramduels;
-			sourceTree = "<group>";
-		};
-		3A25E69F2F4CBEAB0003826F /* supabase */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = supabase;
+			path = AnagramDuels;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3A25E6712F4CB8640003826F /* Frameworks */ = {
+		3A1D93A52F4CE1E100C0505B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A25E6E02F4CC1480003826F /* Supabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A25E66B2F4CB8640003826F = {
+		3A1D939F2F4CE1E100C0505B = {
 			isa = PBXGroup;
 			children = (
-				3A25E7172F4CCD210003826F /* REQS.md */,
-				3A25E6852F4CBD5E0003826F /* README.md */,
-				3A25E6762F4CB8640003826F /* anagramduels */,
-				3A25E6752F4CB8640003826F /* Products */,
-				3A25E69F2F4CBEAB0003826F /* supabase */,
+				3A1D93AA2F4CE1E100C0505B /* AnagramDuels */,
+				3A1D93A92F4CE1E100C0505B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3A25E6752F4CB8640003826F /* Products */ = {
+		3A1D93A92F4CE1E100C0505B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A25E6742F4CB8640003826F /* anagramduels.app */,
+				3A1D93A82F4CE1E100C0505B /* AnagramDuels.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,80 +48,74 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A25E6732F4CB8640003826F /* anagramduels */ = {
+		3A1D93A72F4CE1E100C0505B /* AnagramDuels */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A25E67F2F4CB8640003826F /* Build configuration list for PBXNativeTarget "anagramduels" */;
+			buildConfigurationList = 3A1D93B32F4CE1E200C0505B /* Build configuration list for PBXNativeTarget "AnagramDuels" */;
 			buildPhases = (
-				3A25E6702F4CB8640003826F /* Sources */,
-				3A25E6712F4CB8640003826F /* Frameworks */,
-				3A25E6722F4CB8640003826F /* Resources */,
+				3A1D93A42F4CE1E100C0505B /* Sources */,
+				3A1D93A52F4CE1E100C0505B /* Frameworks */,
+				3A1D93A62F4CE1E100C0505B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				3A25E6762F4CB8640003826F /* anagramduels */,
-				3A25E69F2F4CBEAB0003826F /* supabase */,
+				3A1D93AA2F4CE1E100C0505B /* AnagramDuels */,
 			);
-			name = anagramduels;
+			name = AnagramDuels;
 			packageProductDependencies = (
-				3A25E6DF2F4CC1480003826F /* Supabase */,
 			);
-			productName = anagramduels;
-			productReference = 3A25E6742F4CB8640003826F /* anagramduels.app */;
+			productName = AnagramDuels;
+			productReference = 3A1D93A82F4CE1E100C0505B /* AnagramDuels.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3A25E66C2F4CB8640003826F /* Project object */ = {
+		3A1D93A02F4CE1E100C0505B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					3A25E6732F4CB8640003826F = {
+					3A1D93A72F4CE1E100C0505B = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
-			buildConfigurationList = 3A25E66F2F4CB8640003826F /* Build configuration list for PBXProject "anagramduels" */;
+			buildConfigurationList = 3A1D93A32F4CE1E100C0505B /* Build configuration list for PBXProject "AnagramDuels" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 3A25E66B2F4CB8640003826F;
+			mainGroup = 3A1D939F2F4CE1E100C0505B;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				3A25E6DE2F4CC1480003826F /* XCRemoteSwiftPackageReference "supabase-swift" */,
-			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 3A25E6752F4CB8640003826F /* Products */;
+			productRefGroup = 3A1D93A92F4CE1E100C0505B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A25E6732F4CB8640003826F /* anagramduels */,
+				3A1D93A72F4CE1E100C0505B /* AnagramDuels */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3A25E6722F4CB8640003826F /* Resources */ = {
+		3A1D93A62F4CE1E100C0505B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A25E6862F4CBD5E0003826F /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3A25E6702F4CB8640003826F /* Sources */ = {
+		3A1D93A42F4CE1E100C0505B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -161,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		3A25E67D2F4CB8640003826F /* Debug */ = {
+		3A1D93B12F4CE1E200C0505B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -225,7 +189,7 @@
 			};
 			name = Debug;
 		};
-		3A25E67E2F4CB8640003826F /* Release */ = {
+		3A1D93B22F4CE1E200C0505B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,25 +246,22 @@
 			};
 			name = Release;
 		};
-		3A25E6802F4CB8640003826F /* Debug */ = {
+		3A1D93B42F4CE1E200C0505B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = anagramduels/anagramduels.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AnagramDuels/AnagramDuels.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KSWG3W87J4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Anagram Duels";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,25 +279,22 @@
 			};
 			name = Debug;
 		};
-		3A25E6812F4CB8640003826F /* Release */ = {
+		3A1D93B52F4CE1E200C0505B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = anagramduels/anagramduels.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AnagramDuels/AnagramDuels.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KSWG3W87J4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Anagram Duels";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,44 +315,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A25E66F2F4CB8640003826F /* Build configuration list for PBXProject "anagramduels" */ = {
+		3A1D93A32F4CE1E100C0505B /* Build configuration list for PBXProject "AnagramDuels" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3A25E67D2F4CB8640003826F /* Debug */,
-				3A25E67E2F4CB8640003826F /* Release */,
+				3A1D93B12F4CE1E200C0505B /* Debug */,
+				3A1D93B22F4CE1E200C0505B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A25E67F2F4CB8640003826F /* Build configuration list for PBXNativeTarget "anagramduels" */ = {
+		3A1D93B32F4CE1E200C0505B /* Build configuration list for PBXNativeTarget "AnagramDuels" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3A25E6802F4CB8640003826F /* Debug */,
-				3A25E6812F4CB8640003826F /* Release */,
+				3A1D93B42F4CE1E200C0505B /* Debug */,
+				3A1D93B52F4CE1E200C0505B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		3A25E6DE2F4CC1480003826F /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/supabase/supabase-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.5.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3A25E6DF2F4CC1480003826F /* Supabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A25E6DE2F4CC1480003826F /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = Supabase;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 3A25E66C2F4CB8640003826F /* Project object */;
+	rootObject = 3A1D93A02F4CE1E100C0505B /* Project object */;
 }

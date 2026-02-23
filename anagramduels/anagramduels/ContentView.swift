@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  anagramduels
+//  AnagramDuels
 //
 //  Created by Isaiah Pham on 2/23/26.
 //
