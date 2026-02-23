@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct anagramduelsApp: App {
+
+    @StateObject private var router = AppRouter()
+    @StateObject private var authService = AuthService()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environmentObject(router)
+                .environmentObject(authService)
         }
     }
 }
