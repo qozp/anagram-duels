@@ -17,9 +17,23 @@
 		3A25E7172F4CCD210003826F /* REQS.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REQS.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		3A6AB69C2F4CD21500AC2E18 /* Exceptions for "anagramduels" folder in "Compile Sources" phase from "anagramduels" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 3A25E6702F4CB8640003826F /* Sources */;
+			membershipExceptions = (
+				Resources/Assets.xcassets,
+				Resources/dictionary.txt,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3A25E6762F4CB8640003826F /* anagramduels */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3A6AB69C2F4CD21500AC2E18 /* Exceptions for "anagramduels" folder in "Compile Sources" phase from "anagramduels" target */,
+			);
 			path = anagramduels;
 			sourceTree = "<group>";
 		};
