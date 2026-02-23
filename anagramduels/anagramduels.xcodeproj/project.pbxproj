@@ -14,6 +14,7 @@
 /* Begin PBXFileReference section */
 		3A25E6742F4CB8640003826F /* anagramduels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = anagramduels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A25E6852F4CBD5E0003826F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3A25E7172F4CCD210003826F /* REQS.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REQS.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -44,6 +45,7 @@
 		3A25E66B2F4CB8640003826F = {
 			isa = PBXGroup;
 			children = (
+				3A25E7172F4CCD210003826F /* REQS.md */,
 				3A25E6852F4CBD5E0003826F /* README.md */,
 				3A25E6762F4CB8640003826F /* anagramduels */,
 				3A25E6752F4CB8640003826F /* Products */,

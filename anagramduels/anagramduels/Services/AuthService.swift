@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 import Supabase
 import AuthenticationServices
 import CryptoKit
@@ -69,10 +70,9 @@ final class AuthService: ObservableObject {
                 email: email,
                 password: password
             )
-            if let user = response.user {
-                try await createProfile(for: user, username: username)
-                await fetchOrCreateProfile(for: user)
-            }
+            let user = response.user
+            try await createProfile(for: user, username: username)
+            await fetchOrCreateProfile(for: user)
         } catch {
             authError = error.localizedDescription
         }

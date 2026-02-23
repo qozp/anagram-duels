@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 /// Loads the Scrabble dictionary from the app bundle and provides
 /// fast word-lookup and base-word selection.

@@ -1,8 +1,8 @@
 import Foundation
+import Combine
 
 @MainActor
 final class MainMenuViewModel: ObservableObject {
-
     @Published private(set) var isLoading = false
 
     // MARK: - Dependencies

@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 /// Drives top-level navigation for the app.
 /// Screens inject and observe this via @EnvironmentObject.

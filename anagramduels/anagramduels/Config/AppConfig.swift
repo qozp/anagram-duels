@@ -32,9 +32,9 @@ enum AppConfig {
         static let scoringTable: [Int: Int] = [
             2: 100,
             3: 200,
-            4: 500,
-            5: 1000,
-            6: 2000,
+            4: 400,
+            5: 800,
+            6: 1600,
         ]
 
         /// Returns points for a given word, or 0 if length is unrecognised.
