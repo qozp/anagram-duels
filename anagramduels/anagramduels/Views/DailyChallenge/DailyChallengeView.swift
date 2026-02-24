@@ -24,10 +24,7 @@ struct DailyChallengeView: View {
                         .foregroundColor(theme.textSecondary)
                 }
             }
-            .navigationTitle("Daily Challenge")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbarBackground(theme.backgroundSecondary, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }

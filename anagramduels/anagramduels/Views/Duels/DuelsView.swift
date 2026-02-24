@@ -34,10 +34,7 @@ struct DuelsView: View {
                     }
                 }
             }
-            .navigationTitle("Duels")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbarBackground(theme.backgroundSecondary, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar(.hidden, for: .navigationBar)
         }
         .onAppear {
             // Immediately prompt guest when they tap the tab

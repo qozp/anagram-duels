@@ -18,10 +18,7 @@ struct LevelsView: View {
                         .foregroundColor(theme.textSecondary)
                 }
             }
-            .navigationTitle("Levels")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbarBackground(theme.backgroundSecondary, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }

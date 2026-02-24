@@ -34,10 +34,7 @@ struct ProfileView: View {
                     .padding(.top, 16)
                 }
             }
-            .navigationTitle("Profile")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbarBackground(theme.backgroundSecondary, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }
