@@ -11,7 +11,6 @@ struct SettingsView: View {
             theme.backgroundPrimary.ignoresSafeArea()
 
             List {
-
                 // MARK: Appearance
                 Section {
                     AppearancePickerRow()
@@ -64,8 +63,14 @@ struct SettingsView: View {
             .scrollContentBackground(.hidden)
             .background(theme.backgroundPrimary)
         }
-        .navigationTitle("Settings")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Settings")
+                    .font(.headline)
+                    .foregroundColor(theme.textPrimary)
+            }
+        }
         .toolbarBackground(theme.backgroundSecondary, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
     }
