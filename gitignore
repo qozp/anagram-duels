@@ -1,0 +1,27 @@
+# Xcode
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# macOS
+.DS_Store
+*.swp
+
+# Secrets — NEVER commit these
+AnagramDuels/Config/Development.xcconfig
+*.xcconfig
+!AnagramDuels/Config/Development.xcconfig.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
