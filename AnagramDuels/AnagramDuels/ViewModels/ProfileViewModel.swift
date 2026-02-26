@@ -78,25 +78,50 @@ final class ProfileViewModel: ObservableObject {
         isSavingSettings = false
     }
 
+    // MARK: - Profile Editing
+
+    func updateDisplayName(_ newName: String, userID: UUID) async throws {
+        let trimmed = newName.trimmingCharacters(in: .whitespaces)
+        guard trimmed.count <= 40 else { throw ProfileError.displayNameTooLong }
+        // Empty string clears the display name
+        let value: String? = trimmed.isEmpty ? nil : trimmed
+        try await supabase
+            .from("users")
+            .update(["display_name": value])
+            .eq("id", value: userID.uuidString)
+            .execute()
+        user?.displayName = value
+    }
+
     func updateUsername(_ newUsername: String, userID: UUID) async throws {
-        guard newUsername.count >= 3 else {
-            throw ProfileError.usernameTooShort
+        let trimmed = newUsername.trimmingCharacters(in: .whitespaces)
+        guard trimmed.count >= 3  else { throw ProfileError.usernameTooShort }
+        guard trimmed.count <= 20 else { throw ProfileError.usernameTooLong }
+        guard trimmed.allSatisfy({ $0.isLetter || $0.isNumber || $0 == "_" }) else {
+            throw ProfileError.usernameInvalidCharacters
         }
         try await supabase
             .from("users")
-            .update(["username": newUsername])
+            .update(["username": trimmed])
             .eq("id", value: userID.uuidString)
             .execute()
-        user?.username = newUsername
+        user?.username = trimmed
     }
 }
 
+// MARK: - Errors
 enum ProfileError: LocalizedError {
     case usernameTooShort
+    case usernameTooLong
+    case usernameInvalidCharacters
+    case displayNameTooLong
 
     var errorDescription: String? {
         switch self {
-        case .usernameTooShort: return "Username must be at least 3 characters."
+        case .usernameTooShort:          return "Username must be at least 3 characters."
+        case .usernameTooLong:           return "Username must be 20 characters or fewer."
+        case .usernameInvalidCharacters: return "Username can only contain letters, numbers, and underscores."
+        case .displayNameTooLong:        return "Display name must be 40 characters or fewer."
         }
     }
 }

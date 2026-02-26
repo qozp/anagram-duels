@@ -16,9 +16,22 @@
 		3A9A498C2F50B32E00F1495F /* SETUP.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SETUP.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3A9A49992F50E20C00F1495F /* Exceptions for "AnagramDuels" folder in "AnagramDuels" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3A9A48A82F50AA0300F1495F /* AnagramDuels */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3A9A48AB2F50AA0300F1495F /* AnagramDuels */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3A9A49992F50E20C00F1495F /* Exceptions for "AnagramDuels" folder in "AnagramDuels" target */,
+			);
 			path = AnagramDuels;
 			sourceTree = "<group>";
 		};
@@ -276,7 +289,9 @@
 				DEVELOPMENT_TEAM = KSWG3W87J4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AnagramDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Anagram Duels";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -312,7 +327,9 @@
 				DEVELOPMENT_TEAM = KSWG3W87J4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AnagramDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Anagram Duels";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

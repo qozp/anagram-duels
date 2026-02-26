@@ -2,13 +2,13 @@ import Foundation
 import Combine
 import Supabase
 
-/// Drives the global authentication state. Injected as an @EnvironmentObject.
 @MainActor
 final class AuthViewModel: ObservableObject {
 
     enum AuthState {
         case loading
-        case unauthenticated  // signed out, but may have passed welcome
+        case unauthenticated
+        case guest
         case authenticated(user: UserModel)
     }
 
@@ -41,18 +41,18 @@ final class AuthViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         do {
-            let session = try await authService.signInWithApple()
-            await fetchOrCreateUser(supabaseUserID: session.user.id)
+            let result = try await authService.signInWithApple()
+            await fetchOrCreateUser(supabaseUserID: result.session.user.id, displayName: result.displayName)
         } catch {
             errorMessage = error.localizedDescription
         }
         isLoading = false
     }
 
-    // MARK: - Guest (no Supabase session, local play only)
+    // MARK: - Guest
 
     func continueAsGuest() {
-        // state stays .unauthenticated — MainTabView handles what's available
+        state = .guest
     }
 
     // MARK: - Sign Out
@@ -60,7 +60,9 @@ final class AuthViewModel: ObservableObject {
     func signOut() async {
         isLoading = true
         do {
-            try await authService.signOut()
+            if case .authenticated = state {
+                try await authService.signOut()
+            }
             state = .unauthenticated
         } catch {
             errorMessage = error.localizedDescription
@@ -80,9 +82,14 @@ final class AuthViewModel: ObservableObject {
         return false
     }
 
+    var isGuest: Bool {
+        if case .guest = state { return true }
+        return false
+    }
+
     // MARK: - Private Helpers
 
-    private func fetchOrCreateUser(supabaseUserID: UUID) async {
+    private func fetchOrCreateUser(supabaseUserID: UUID, displayName: String? = nil) async {
         do {
             let users: [UserModel] = try await supabase
                 .from("users")
@@ -93,9 +100,21 @@ final class AuthViewModel: ObservableObject {
                 .value
 
             if let existing = users.first {
-                state = .authenticated(user: existing)
+                // Apple only provides display name on first sign-in — save it if we don't have it yet
+                if let name = displayName, existing.displayName == nil {
+                    try? await supabase
+                        .from("users")
+                        .update(["display_name": name])
+                        .eq("id", value: supabaseUserID.uuidString)
+                        .execute()
+                    var updated = existing
+                    updated.displayName = name
+                    state = .authenticated(user: updated)
+                } else {
+                    state = .authenticated(user: existing)
+                }
             } else {
-                let newUser = try await createUserRecord(id: supabaseUserID)
+                let newUser = try await createUserRecord(id: supabaseUserID, displayName: displayName)
                 state = .authenticated(user: newUser)
             }
         } catch {
@@ -104,12 +123,11 @@ final class AuthViewModel: ObservableObject {
         }
     }
 
-    private func createUserRecord(id: UUID) async throws -> UserModel {
-        let username = "user_\(UUID().uuidString.prefix(8))"
-
+    private func createUserRecord(id: UUID, displayName: String?) async throws -> UserModel {
         struct NewUser: Encodable {
             let id: String
             let username: String
+            let display_name: String?
             let guest_flag: Bool
             let theme_mode: String
             let notifications_enabled: Bool
@@ -117,7 +135,8 @@ final class AuthViewModel: ObservableObject {
 
         let record = NewUser(
             id: id.uuidString,
-            username: username,
+            username: "user_\(UUID().uuidString.prefix(8))",
+            display_name: displayName,
             guest_flag: false,
             theme_mode: AppConfig.ThemeMode.system.rawValue,
             notifications_enabled: true
@@ -134,7 +153,8 @@ final class AuthViewModel: ObservableObject {
             .value
 
         guard let user = users.first else {
-            throw NSError(domain: "AuthViewModel", code: 0, userInfo: [NSLocalizedDescriptionKey: "User creation failed."])
+            throw NSError(domain: "AuthViewModel", code: 0,
+                          userInfo: [NSLocalizedDescriptionKey: "User creation failed."])
         }
         return user
     }

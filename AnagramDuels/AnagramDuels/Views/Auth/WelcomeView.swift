@@ -5,8 +5,6 @@ struct WelcomeView: View {
     @EnvironmentObject var authVM: AuthViewModel
     @Environment(\.colorScheme) private var colorScheme
 
-    @State private var showMainTabs = false
-
     private enum Layout {
         static let buttonHeight: CGFloat       = 54
         static let buttonCornerRadius: CGFloat = 14
@@ -14,19 +12,7 @@ struct WelcomeView: View {
     }
 
     var body: some View {
-        if showMainTabs {
-            MainTabView()
-        } else {
-            welcomeContent
-                .onChange(of: authVM.isAuthenticated) { _, isAuth in
-                    // If Apple Sign-In completes, transition to main app
-                    if isAuth {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            showMainTabs = true
-                        }
-                    }
-                }
-        }
+        welcomeContent
     }
 
     private var welcomeContent: some View {
@@ -83,9 +69,6 @@ struct WelcomeView: View {
                     // Guest button
                     Button {
                         authVM.continueAsGuest()
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            showMainTabs = true
-                        }
                     } label: {
                         HStack(spacing: 8) {
                             Image(systemName: "person.fill")

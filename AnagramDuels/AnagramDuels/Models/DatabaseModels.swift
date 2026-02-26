@@ -4,8 +4,7 @@ import Foundation
 struct UserModel: Codable, Identifiable {
     let id: UUID
     var username: String
-    let appleID: String?
-    let guestFlag: Bool
+    var displayName: String?
     var themeMode: AppConfig.ThemeMode
     var notificationsEnabled: Bool
     var pushToken: String?
@@ -16,8 +15,7 @@ struct UserModel: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id
         case username
-        case appleID              = "apple_id"
-        case guestFlag            = "guest_flag"
+        case displayName          = "display_name"
         case themeMode            = "theme_mode"
         case notificationsEnabled = "notifications_enabled"
         case pushToken            = "push_token"

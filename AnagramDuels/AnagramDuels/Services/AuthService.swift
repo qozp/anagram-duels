@@ -2,43 +2,36 @@ import Foundation
 import AuthenticationServices
 import Supabase
 
-/// Handles Apple Sign-In and guest authentication flows.
-/// All auth state changes are observed through `SupabaseService.shared.client.auth`.
+/// Handles Apple Sign-In flow.
 final class AuthService: NSObject {
 
     static let shared = AuthService()
 
     private var supabase: SupabaseClient { SupabaseService.shared.client }
 
-    // Continuation captured during Apple Sign-In ASAuthorizationController flow
-    private var appleSignInContinuation: CheckedContinuation<String, Error>?
+    private var appleSignInContinuation: CheckedContinuation<(token: String, displayName: String?), Error>?
 
-    private override init() {
-        super.init()
-    }
+    private override init() { super.init() }
 
     // MARK: - Apple Sign-In
 
-    /// Initiates Apple Sign-In and returns the Supabase session on success.
-    /// Throws if the user cancels or if authentication fails.
+    /// Presents the Apple Sign-In sheet and returns a Supabase session + the user's display name.
+    /// Apple only provides the full name on the very first sign-in for a given device.
     @MainActor
-    func signInWithApple() async throws -> Session {
-        let idToken = try await requestAppleIDToken()
+    func signInWithApple() async throws -> (session: Session, displayName: String?) {
+        let result = try await requestAppleCredential()
         let session = try await supabase.auth.signInWithIdToken(
-            credentials: .init(provider: .apple, idToken: idToken)
+            credentials: .init(provider: .apple, idToken: result.token)
         )
-        return session
+        return (session, result.displayName)
     }
 
-    /// Requests an Apple ID token via `ASAuthorizationController`.
-    private func requestAppleIDToken() async throws -> String {
+    private func requestAppleCredential() async throws -> (token: String, displayName: String?) {
         return try await withCheckedThrowingContinuation { continuation in
             self.appleSignInContinuation = continuation
-
             let provider = ASAuthorizationAppleIDProvider()
-            let request = provider.createRequest()
+            let request  = provider.createRequest()
             request.requestedScopes = [.fullName, .email]
-
             let controller = ASAuthorizationController(authorizationRequests: [request])
             controller.delegate = self
             controller.presentationContextProvider = self
@@ -55,13 +48,11 @@ final class AuthService: NSObject {
     // MARK: - Current Session
 
     var currentUserID: UUID? {
-        get async {
-            return try? await supabase.auth.user().id
-        }
+        get async { try? await supabase.auth.user().id }
     }
 
     func currentSession() async throws -> Session? {
-        return try await supabase.auth.session
+        try await supabase.auth.session
     }
 }
 
@@ -74,14 +65,23 @@ extension AuthService: ASAuthorizationControllerDelegate {
     ) {
         guard
             let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
-            let tokenData = credential.identityToken,
-            let token = String(data: tokenData, encoding: .utf8)
+            let tokenData  = credential.identityToken,
+            let token      = String(data: tokenData, encoding: .utf8)
         else {
             appleSignInContinuation?.resume(throwing: AuthError.invalidCredential)
             appleSignInContinuation = nil
             return
         }
-        appleSignInContinuation?.resume(returning: token)
+
+        // Apple only sends fullName on the first authorisation — capture it while we can
+        let displayName: String? = {
+            let parts = [credential.fullName?.givenName, credential.fullName?.familyName]
+                .compactMap { $0 }
+                .filter { !$0.isEmpty }
+            return parts.isEmpty ? nil : parts.joined(separator: " ")
+        }()
+
+        appleSignInContinuation?.resume(returning: (token: token, displayName: displayName))
         appleSignInContinuation = nil
     }
 
@@ -96,10 +96,8 @@ extension AuthService: ASAuthorizationControllerDelegate {
 
 // MARK: - ASAuthorizationControllerPresentationContextProviding
 extension AuthService: ASAuthorizationControllerPresentationContextProviding {
-
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        // Returns the key window for presenting the Apple Sign-In sheet
-        return UIApplication.shared.connectedScenes
+        UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
             .flatMap { $0.windows }
             .first { $0.isKeyWindow } ?? UIWindow()
